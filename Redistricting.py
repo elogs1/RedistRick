@@ -41,8 +41,26 @@ class RedistRick(object):
         '''
             Define parameter definitions
         '''
-        params = None
-        return params
+        param0 = arcpy.Parameter(
+	    displayName="Input Feature",
+	    name="in_feature",
+	    datatype="GPFeatureLayer",
+	    parameterType="Required",
+    	direction="Input")
+
+        param1 = arcpy.Parameter(
+        displayName="Record Set",
+        name="record_set",
+        datatype="GPFeatureRecordSetLayer",
+        parameterType="Required",
+        direction="Input")
+
+	    """We will need this value to refer to the input layer(param0), right now I just have it hardcoded 
+	    to the file I was going to choose in order to test"""
+	    param1.value = 'Z:/5223/lab10/tl_2010_39049_tract10.shp'
+
+	    params = [param0, param1]
+	    return params
 
     def isLicensed(self):
         '''
